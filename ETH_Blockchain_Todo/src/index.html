@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>Todo List</title>
+        <link rel="shortcut icon" type="image/png" href="https://img.icons8.com/fluency/48/000000/microsoft-todo-2019.png"/>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="index.css">
+
+        <!-- jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+        <!-- SOLIDITY DEPENDECIES -->
+        <script src="vendor/web3/dist/web3.js"></script>
+        <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <div id="loader"></div>
+
+        <div id="content" class="d-flex align-items-center justify-content-center flex-column">
+			<img src="https://img.icons8.com/fluency/96/000000/microsoft-todo-2019.png"/><br>
+			<h1>Todo List</h1>
+
+            <p><strong>Address: </strong><small id="account"></small></p>
+
+			<div class="d-flex align-items-center mb-3">
+				<form id="createTask" class="form-group mr-3 mb-0" onSubmit="App.createTask(); return false;">
+				    <input type="text" class="form-control" id="newTaskName" placeholder="Add Task..." required>
+                    <input id="newTaskDate" class="form-control" type="text" placeholder="Conclusion Date" onfocus="(this.type='date')" onblur="(this.type='text')">
+                </form>
+                <button type="submit" form="createTask" class="btn btn-primary mr-3">Add</button>
+			</div>
+			<div class="table-wrapper">
+				<table class="table table-hover table-bordered">
+					<thead><tr>
+						<th>Id.</th>
+						<th>Description</th>
+						<th>Conclusion Date</th>
+						<th>Status</th>
+						<th>Actions</th>
+					</tr></thead>
+					
+					<tbody id="tasksTable"></tbody>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+* { color: aliceblue; font-family: 'Arial'; }
+body { background-color: #202531; }
+th, td, tr { text-align: center; vertical-align: middle; }
+
+.app-container { height: 65vh; width: 100%; }
+input { color: #202531; }
+
+@keyframes spinner {
+	0% 		{ transform: translate3d(-50%, -50%, 0) rotate(0deg); }
+	100% 	{ transform: translate3d(-50%, -50%, 0) rotate(360deg); }
+}
+
+.loader::before {
+	animation: 1.5s linear infinite spinner;
+	animation-play-state: inherit;
+	border: solid 5px #cfd0d1;
+	border-bottom-color: #1c87c9;
+	border-radius: 50%;
+	content: "";
+	height: 40px;
+	width: 40px;
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	transform: translate3d(-50%, -50%, 0);
+	will-change: transform;
+}
