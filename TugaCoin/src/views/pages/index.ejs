@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <title>TugaCoin Blockchain</title>
+
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    
+    <body>
+        <nav class="navbar navbar-expand navbar-light bg-warning">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/"><img src="tugacoin.svg" width="30" height="24" class="d-inline-block align-text-top"></a>
+                <div class="collapse navbar-collapse">
+                    <div class="navbar-nav">
+                        <span class="navbar-text mr-1">Address: <small><%= activeWalletAddress %></small> </span>
+                        <span class="navbar-text mr-1">Balance: <small><%= balance %></small> </span>
+                    </div>
+                </div>
+                
+                <form class="d-flex" method="POST" action="/<%=menus[0]%>">
+                    <button class="btn btn-outline-dark mr-2" type="submit">MyWallet</button>
+                </form>
+                <%if (activeWalletAddress!=='') {%>
+                <form class="d-flex" method="POST" action="/<%=menus[1]%>">
+                    <button class="btn btn-outline-dark mr-2" type="submit">Transact</button>
+                </form>
+                <%}%>
+                <form class="d-flex" method="POST" action="/<%=menus[2]%>">
+                    <button class="btn btn-outline-dark mr-2" type="submit">Blockchain</button>
+                </form>
+                <form class="d-flex" method="POST" action="/<%=menus[3]%>">
+                    <button class="btn btn-outline-dark mr-2" type="submit">Settings</button>
+                </form>
+            </div>
+        </nav>
+        
+        <div class="d-flex align-items-center justify-content-center flex-column">
+			<br><br><img src="tugacoin.svg"><br>
+			<h1 style="color: #F1C40F;">TugaCoin <%=activeMenu%></h1><br>
+
+            <% if (activeMenu===menus[0]) {%>
+                <form class="mb-3 row" method="POST" action="/generateNewKey">
+                    <button class="btn btn-primary mr-3 mb-0">Generate New Wallet</button>
+                </form> <br>
+            
+                <form class="mb-3 row" method="POST" action="/selectWallet">
+                    <select class="form-select btn-warning mr-3 mb-0" name="selectedWallet">
+                        <option name="">Select your wallet</option>
+                        <% for(const i in availableWallets) { 
+                            if (availableWallets[i].myaddress!==activeWalletAddress) {%>
+                                <option name="<%=i%>"><%= availableWallets[i].myaddress %></option> <%}%>
+                        <%}%>
+                    </select>
+                    <button type="submit" class="btn btn-warning ">Select Wallet</button>
+                </form>
+            <%}%>
+
+
+            <% if (activeMenu===menus[1]) {%>
+                <form method="POST" action="/addTransaction">
+                    <div class="mb-3 row">
+                        <input class=" mr-3 mb-0" type="number" min="0.01" max="<%=balance%>" step="0.01" name="amount" placeholder="Amount">
+                        <button class="btn btn-success" type="submit">Send</button>
+                    </div>
+                    <select class="form-select btn-warning mb-3 row" name="selectedWallet">
+                        <option name="">Send To</option>
+                        <% for(const i in availableWallets) { 
+                            if (availableWallets[i].myaddress!==activeWalletAddress) {%>
+                                <option name="<%=i%>"><%= availableWallets[i].myaddress %></option> <%}%>
+                        <%}%>
+                    </select>
+                </form>
+                <%if (tugaCoin.pendingTransactions.length==0) { %>
+                    <h2>No pending transactions...</h2>
+                <%} else {%>
+                    <div class="container">
+                        <h2>Pending Transactions</h2>
+                        <p>Each card represents a pending transaction, which means it is not done yet. You must first mine them.</p>
+                    </div>
+                    <div class="container">
+                        <div class="card-group card-group-scroll">
+                            <% for(const i in tugaCoin.pendingTransactions) { %>
+                                <div class="card" style="min-width: max-content;">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">
+                                            <h5 class="card-title">Transaction <%=i%></h5>
+                                        </li>
+                                        <li class="list-group-item"><span class="">From</span>
+                                            <div class="text-truncate">
+                                                <small style="color: rgb(205, 30, 157);"><%=tugaCoin.pendingTransactions[i].fromAddress%></small>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item"><span class="">To</span>
+                                            <div class="text-truncate text-muted">
+                                                <small style="color: rgb(12, 188, 193);"><%=tugaCoin.pendingTransactions[i].toAddress%></small>
+                                            </div>
+                                        </li>
+                                        <li class="list-group-item"><span class="">Amount</span>
+                                            <div class="text-truncate text-muted">
+                                                <small><%=tugaCoin.pendingTransactions[i].amount%> TugaCoins</small>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            <%}%>
+                        </div>
+                    </div> <br>
+                    <div class="container">
+                        <form method="POST" action="/minePendingTransactions">
+                            <button class="btn btn-success" type="submit">Mine All</button>
+                        </form>
+                    </div>
+                <%}%>
+            <%}%>
+
+
+            <% if (activeMenu===menus[2]) {%>
+                <div class="container">
+                    <h2>Blocks on chain</h2>
+                    <p>Each card represents a block on the chain.</p>
+                </div>
+                <div class="container">
+                    <div class="card-group card-group-scroll">
+                        <%for (let i = 0; i < tugaCoin.chain.length; i++) { %>
+                            <div class="card" style="min-width: max-content;">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <h5 class="card-title">Block <%=i%>
+                                            <%if (i==0) {%><small class="text-muted">(Genesis block)</small><%}%>
+                                        </h5>
+                                    </li>
+                                    <li class="list-group-item"><span class="">Hash</span>
+                                        <div class="text-truncate">
+                                            <%if (i%2==1) {%><small style="color: rgb(12, 188, 193);"><%=tugaCoin.chain[i].hash%></small>
+                                            <%} else {%><small style="color: rgb(205, 30, 157);"><%=tugaCoin.chain[i].hash%></small><%}%>
+                                        </div><br>
+                                        <span class="">Hash of previous block</span>
+                                        <div class="text-truncate">
+                                            <%if (i%2==0) {%><small style="color: rgb(12, 188, 193);"><%=tugaCoin.chain[i].previousHash%></small>
+                                            <%} else {%><small style="color: rgb(205, 30, 157);"><%=tugaCoin.chain[i].previousHash%></small><%}%>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item"><span class="">Nonce</span>
+                                        <div class="text-truncate text-muted"><small><%=tugaCoin.chain[i].nonce%></small></div>
+                                    </li>
+                                    <li class="list-group-item"><span class="">Timestamp</span>
+                                        <div class="text-truncate text-muted">
+                                            <span class="text-muted"><small><%=new Date(tugaCoin.chain[i].timestamp).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })%></small></span>
+                                        </div>
+                                    </li>
+                                    <%if (i!=0) {%>
+                                        <li class="list-group-item"><a href="viewTransactions?index=<%=i%>">View Transactions</a><br></li>
+                                    <%}%>
+                                </ul>
+                            </div>
+                        <%}%>
+                    </div>
+                </div>
+                <%if (blockTransactions.length!=0) {%>
+                    <br><br>
+                    <div class="container">
+                        <table class="table table-hover table-striped">
+                            <thead> <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">From</th>
+                                    <th scope="col">To</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Timestamp</th>
+                                    <th scope="col">Valid</th>
+                            </tr> </thead>
+                            <tbody>
+                                <%for (const i in blockTransactions) { %>
+                                    <tr>
+                                        <td style="width: 5px"><%=i%></td>
+                                        <td class="text-truncate" style="max-width: 100px;">
+                                            <%if (blockTransactions[i].fromAddress==null) {%><span class="text-muted">System</span></td>
+                                            <%} else {%><small style="color: white;"><%=blockTransactions[i].fromAddress%></small><%}%>
+                                        </td>
+                                        <td class="text-truncate" style="max-width: 100px;">
+                                            <small style="color: white;"><%=blockTransactions[i].toAddress%></small>
+                                        </td>
+                                        <td style="width: 40px">
+                                            <span style="color: white;"> <%=blockTransactions[i].amount%> </span>
+                                            <%if (blockTransactions[i].fromAddress==null) {%> 
+                                                <br><small class="text-muted">(Block reward)</small>
+                                            <%}%>
+                                        </td>
+                                        <td style="width: 50px">
+                                            <span style="color: white;"><%=blockTransactions[i].timestamp%></span>
+                                            <br>
+                                            <span>
+                                                <small class="text-muted"><%=new Date(blockTransactions[i].timestamp).toLocaleDateString("en-US", { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false })%>
+                                            </small></span>
+                                        </td>
+                                        <td style="width: 30px;"><span><%if (blockTransactions[i].amountValidated) {%>✅<%} else {%>❌<%}%></span></td>
+                                    </tr>
+                                <%}%>
+                            </tbody>
+                        </table>
+                    </div>
+                <%}%>
+            <%}%>
+            
+
+
+
+            <% if (activeMenu===menus[3]) {%>
+                <form method="POST" action="/changeSettings">
+                    <p class="mb-3 row">Difficulty: <input type="number" min="1" class="form-control" name="newDifficulty" value="<%= tugaCoin.difficulty %>"></p>
+                    <p class="mb-3 row">Mining Reward: <input type="number" min="1" class="form-control" name="newMiningReward" value="<%= tugaCoin.miningReward %>"></p>
+                    <button class="btn btn-success mb-3 row" type="submit">Submit Changes</button>
+                </form>
+            <%}%>
+        </div>
+	</body>
+</html>

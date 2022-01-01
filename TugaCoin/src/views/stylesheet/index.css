@@ -1,0 +1,24 @@
+* { color: aliceblue; font-family: 'Arial'; }
+body { background-color: #202531; }
+th, td, tr { text-align: center; vertical-align: middle; }
+
+.app-container { height: 65vh; width: 100%; }
+input, select, small, span, h5 { color: #202531; }
+
+@media (min-width: 576px) {
+    .card-group.card-group-scroll {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+    }
+
+    .card-group.card-group-scroll > .card {
+        flex-basis: 35%;
+    }
+}
+
+.card-group {
+    overflow-x: scroll;
+    white-space: nowrap;
+    max-width: 100rem;
+    padding: 1rem;
+}
