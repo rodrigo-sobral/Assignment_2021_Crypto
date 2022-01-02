@@ -23,6 +23,7 @@ ___
 - [MetaMask](https://metamask.io/)
 
 ```bash
+npm install -g truffle@5.0.2
 npm install
 ```
 
@@ -63,7 +64,7 @@ Criptografia - 2020/2021 <br>
 Coimbra, 31 de dezembro de 2021
 </b></i></html>
 
-:mortar_board: *[Rodrigo Fernando Henriques Sobral](https://github.com/RodrigoSobral2000)***
+:mortar_board: *[Rodrigo Fernando Henriques Sobral](https://github.com/RodrigoSobral2000)*
 
 ___
 
