@@ -10,6 +10,7 @@ App = {
     load2Blockchain: async () => {
         await App.loadWeb3()
         await App.loadAccount()
+        await App.loadBalance()
         await App.loadContract()
         await App.render()
     },
@@ -44,6 +45,13 @@ App = {
     loadAccount: async () => {
         web3.eth.defaultAccount = web3.eth.accounts[0]
         App.account             = web3.eth.accounts[0]
+    },
+
+    loadBalance: async () => {
+        web3.eth.getBalance(App.account, (err, balance) => {
+            App.balance = this.web3.fromWei(balance, "ether") + " ETH"
+            $('#balance').html(App.balance)
+        });
     },
 
     loadContract: async () => {

@@ -7,12 +7,12 @@ const myWalletAddress = myKey.getPublic('hex');
 
 let tugaCoin = new Blockchain();
 
-// const tx1 = new Transaction(myWalletAddress, 'public key goes here', 10);
-// tx1.signTransaction(myKey);
-// tugaCoin.addTransaction(tx1);
-// tugaCoin.minePendingTransactions(myWalletAddress);
-// console.log('\nBalance of tuga-address is', tugaCoin.getBalanceOfAddress(myWalletAddress));
-// console.log('\nIs chain valid?', tugaCoin.isChainValid());
+const tx1 = new Transaction(myWalletAddress, 'public key goes here', 10);
+tx1.signTransaction(myKey);
+tugaCoin.addTransaction(tx1);
+tugaCoin.minePendingTransactions(myWalletAddress);
+console.log('\nBalance of tuga-address is', tugaCoin.getBalanceOfAddress(myWalletAddress));
+console.log('\nIs chain valid?', tugaCoin.isChainValid());
 
 console.log('Here is your wallet address:\t', myWalletAddress);
 console.log('Here is your private key:\t', myKey.getPrivate('hex'));

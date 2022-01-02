@@ -1,6 +1,6 @@
 Ethereum Todo List | TugaCoin Blockchain 
 :---: | :---:
-<a href="https://github.com/RodrigoSobral2000/Assignment_2021_Crypto/tree/main/ETH_Blockchain_Todo"><img src="https://img.icons8.com/fluency/48/000000/ethereum.png"></a> | <a href="https://github.com/RodrigoSobral2000/Assignment_2021_Crypto/tree/main/TugaCoin"><img src="tugacoin.svg"></a>
+<a href="https://github.com/RodrigoSobral2000/Assignment_2021_Crypto/tree/main/ETH_Blockchain_Todo"><img src="https://img.icons8.com/fluency/48/000000/ethereum.png"></a> | <a href="https://github.com/RodrigoSobral2000/Assignment_2021_Crypto/tree/main/TugaCoin"><img width="60" height="60" src="TugaCoin/src/tugacoin.svg"></a>
 
 ___
 

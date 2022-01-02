@@ -109,7 +109,7 @@ app.get('/viewTransactions', function(req, res) {
 
 //	MENU 3: SETTINGS
 app.post('/changeSettings', function(req, res) {
-	const newDifficulty= req.body['newDifficulty'] ? req.body['newDifficulty'] : tugaCoin.difficulty;
+	const newDifficulty= req.body['newDifficulty'] ? Number(req.body['newDifficulty']) : tugaCoin.difficulty;
 	const newMiningReward= req.body['newMiningReward'] ? req.body['newMiningReward'] : tugaCoin.miningReward;
 	tugaCoin.difficulty= newDifficulty;
 	tugaCoin.miningReward= newMiningReward;
