@@ -9,11 +9,7 @@ ___
 
 ## Used Technologies :computer:
 
-<img src="https://img.icons8.com/fluency/48/000000/node-js.png"/>
-<img width="50" height="50" src="https://cdn.iconscout.com/icon/free/png-256/metamask-2728406-2261817.png"/>
-<img width="35" height="45" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Solidity_logo.svg/512px-Solidity_logo.svg.png">
-<img width="55" height="45" src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg">
-<img src="https://img.icons8.com/fluency/48/000000/visual-studio-code-2019.png"/>
+<img src="https://img.icons8.com/fluency/48/000000/node-js.png"/> <img width="50" height="50" src="https://cdn.iconscout.com/icon/free/png-256/metamask-2728406-2261817.png"/> <img width="35" height="45" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Solidity_logo.svg/512px-Solidity_logo.svg.png"> <img width="55" height="45" src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg"> <img src="https://img.icons8.com/fluency/48/000000/visual-studio-code-2019.png"/>
 
 ___
 

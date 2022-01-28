@@ -12,9 +12,7 @@ ___
 
 ## Used Technologies :computer:
 
-<img src="https://img.icons8.com/fluency/48/000000/node-js.png"/>
-<img width="55" height="45" src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg">
-<img src="https://img.icons8.com/fluency/48/000000/visual-studio-code-2019.png"/>
+<img src="https://img.icons8.com/fluency/48/000000/node-js.png"/> <img width="55" height="45" src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg"> <img src="https://img.icons8.com/fluency/48/000000/visual-studio-code-2019.png"/>
 
 ___
 
