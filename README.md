@@ -4,11 +4,14 @@ Ethereum Todo List | TugaCoin Blockchain
 
 ___
 
-### **Contributors** :sparkles:
+## **Contributors** :sparkles:
 
-<html><i><b>@2021</b></i></html>
+<html><i><b> Mestrado em Segurança Informática - Universidade de Coimbra<br>
+Criptografia - 2020/2021 <br>
+Coimbra, 31 de dezembro de 2021
+</b></i></html>
 
-***[Rodrigo Fernando Henriques Sobral](https://github.com/RodrigoSobral2000)***
+:mortar_board: *[Rodrigo Fernando Henriques Sobral](https://github.com/RodrigoSobral2000)*
 
 ___
 
