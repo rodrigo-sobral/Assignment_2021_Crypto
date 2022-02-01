@@ -47,6 +47,10 @@ ___
 
 ![Main Page](screenshots/main_page.png)
 
+##    Transaction Confirmation :credit_card:
+
+![Transaction](screenshots/transaction.png)
+
 ##    Manage your Tasks :pushpin:
 
 ![Tasks Pages](screenshots/managing_tasks.png)
