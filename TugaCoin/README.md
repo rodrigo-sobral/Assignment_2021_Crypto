@@ -3,7 +3,7 @@
 ___
 
 ##    About :clipboard:
-A Crypto Coin made by a Tuga, which is the name we give to the 2016 Euro Cup Winners.
+A Crypto Currency made by a Tuga, which is the name we give to the 2016 Euro Cup Winners.
 
 > ⚠️
 > This is a demo project, not a real cryptocurrency!
